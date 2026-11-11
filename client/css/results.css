@@ -1,0 +1,214 @@
+/* ============================================================
+   AI Travel Planner — results.css
+   Trip results page: charcoal / terracotta / sand theme.
+   ============================================================ */
+
+.results-layout { padding: 2.3rem 0 3.2rem; }
+
+/* ---------- Trip summary banner (dark, sand accents) ---------- */
+.trip-banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.2rem;
+  flex-wrap: wrap;
+  padding: 1.6rem 1.8rem;
+  margin-bottom: 1.6rem;
+  background:
+    radial-gradient(460px 200px at 92% 0%, rgba(201, 106, 74, 0.26), transparent 70%),
+    var(--ink);
+  border-color: var(--ink);
+}
+
+.trip-banner .route {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  font-family: var(--font-display);
+  font-size: clamp(1.2rem, 2.6vw, 1.5rem);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--on-dark);
+}
+
+.trip-banner .route .arrow { color: var(--accent); }
+
+.trip-banner .meta {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+/* ---------- Result cards & option rows ---------- */
+.result-card h2 {
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.65rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.option-card {
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--highlight);
+  border-radius: var(--radius);
+  padding: 0.9rem 1rem;
+  margin-bottom: 0.8rem;
+  background: var(--card-hover);
+}
+
+.option-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+}
+
+.option-head strong {
+  font-size: 0.98rem;
+  font-weight: 600;
+}
+
+.option-cost {
+  color: var(--accent-strong);
+  font-weight: 700;
+  font-size: 0.95rem;
+  white-space: nowrap;
+}
+
+.route-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  margin-top: 0.5rem;
+  font-size: 0.89rem;
+  color: var(--muted);
+}
+.route-steps .route-arrow { color: var(--accent); font-size: 0.78rem; }
+
+.option-notes,
+.stay-row .option-notes {
+  color: var(--muted);
+  font-size: 0.84rem;
+  line-height: 1.55;
+  margin: 0.45rem 0 0;
+}
+
+.option-card .muted,
+.result-card .muted { color: var(--muted); font-size: 0.88rem; }
+
+.stay-row {
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--highlight);
+  border-radius: var(--radius);
+  padding: 0.8rem 1rem;
+  margin-bottom: 0.7rem;
+  background: var(--card-hover);
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+}
+.stay-row strong { font-size: 0.95rem; font-weight: 600; }
+.stay-row .option-notes { width: 100%; }
+
+/* ---------- Budget table ---------- */
+.budget-table { display: flex; flex-direction: column; }
+
+.budget-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.55rem 0;
+  border-bottom: 1px dashed var(--highlight);
+  font-size: 0.93rem;
+}
+.budget-row .budget-val { font-weight: 600; font-variant-numeric: tabular-nums; }
+
+.budget-total {
+  border-bottom: none;
+  border-top: 2px solid var(--ink);
+  margin-top: 0.25rem;
+  padding-top: 0.75rem;
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+.budget-per-person {
+  display: inline-block;
+  align-self: flex-start;
+  margin: 0.8rem 0 0;
+  padding: 0.3rem 0.75rem;
+  border-radius: 999px;
+  background: var(--highlight);
+  color: var(--ink);
+  font-weight: 600;
+  font-size: 0.86rem;
+}
+
+.budget-note {
+  color: var(--muted);
+  font-size: 0.77rem;
+  margin: 0.7rem 0 0;
+}
+
+.results-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.2rem;
+}
+.results-grid .full { grid-column: 1 / -1; }
+
+/* ---------- Itinerary timeline ---------- */
+.itinerary-day { margin-bottom: 1.4rem; }
+.itinerary-day:last-child { margin-bottom: 0; }
+
+.itinerary-day .day-head {
+  display: flex;
+  align-items: baseline;
+  gap: 0.7rem;
+  margin-bottom: 0.8rem;
+  flex-wrap: wrap;
+}
+.itinerary-day .day-head h3 { margin: 0; font-size: 1.02rem; }
+.itinerary-day .day-head .day-tag {
+  color: var(--accent-strong);
+  font-weight: 700;
+  font-size: 0.74rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.timeline {
+  margin: 0;
+  padding: 0 0 0 1.2rem;
+  list-style: none;
+  border-left: 2px solid var(--highlight);
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  font-size: 0.93rem;
+}
+
+.timeline li { position: relative; }
+
+.timeline li::before {
+  content: "";
+  position: absolute;
+  left: -1.68rem;
+  top: 0.45rem;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 0 3px var(--bg);
+}
+
+.timeline .time {
+  color: var(--ink);
+  font-weight: 600;
+  font-size: 0.83rem;
+  font-variant-numeric: tabular-nums;
+  margin-right: 0.5rem;
+}
+.timeline .muted { color: var(--muted); }

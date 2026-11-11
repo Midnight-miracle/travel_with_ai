@@ -1,0 +1,237 @@
+/* ============================================================
+   AI Travel Planner — planner.css
+   Trip planner form page: charcoal / terracotta / sand theme.
+   ============================================================ */
+
+.planner-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 330px;
+  gap: 1.6rem;
+  align-items: start;
+  padding: 2.3rem 0 3.2rem;
+}
+
+.planner-intro { margin-bottom: 1.6rem; }
+.planner-intro h1 { font-size: clamp(1.7rem, 3.4vw, 2.1rem); }
+.planner-intro p { color: var(--muted); margin: 0.4rem 0 0; max-width: 60ch; }
+
+/* ---------- Form card ---------- */
+.trip-form { padding: clamp(1.25rem, 3vw, 1.9rem); }
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.15rem 1.25rem;
+}
+
+.form-field { display: flex; flex-direction: column; gap: 0.4rem; }
+.form-field.span-2 { grid-column: span 2; }
+
+.form-field label {
+  font-weight: 600;
+  font-size: 0.88rem;
+  letter-spacing: 0.01em;
+  color: var(--text);
+}
+.form-field label .optional {
+  color: var(--muted);
+  font-weight: 400;
+  font-size: 0.78rem;
+}
+
+.form-field input[type="text"],
+.form-field input[type="number"],
+.form-field input[type="date"],
+.form-field select,
+.form-field textarea {
+  width: 100%;
+  padding: 0.72rem 0.9rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--border-strong);
+  background: #fff;
+  color: var(--text);
+  font-family: inherit;
+  font-size: 0.95rem;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.form-field input:hover,
+.form-field select:hover,
+.form-field textarea:hover { border-color: #c6b7ab; }
+
+.form-field input:focus,
+.form-field select:focus,
+.form-field textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-soft);
+}
+
+.form-field input::placeholder,
+.form-field textarea::placeholder { color: #9c948d; }
+
+.form-field select {
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236b6560' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.9rem center;
+  padding-right: 2.4rem;
+}
+
+.field-hint {
+  color: var(--muted);
+  font-size: 0.79rem;
+  margin: 0;
+}
+
+.field-error {
+  color: var(--danger);
+  font-size: 0.8rem;
+  min-height: 1em;
+  margin: 0;
+}
+
+.form-field.invalid input,
+.form-field.invalid select {
+  border-color: var(--danger);
+  box-shadow: 0 0 0 3px var(--danger-soft);
+}
+
+/* Autocomplete suggestions */
+.suggest-wrap { position: relative; }
+
+.suggest-list {
+  position: absolute;
+  z-index: 30;
+  top: calc(100% + 4px);
+  left: 0;
+  right: 0;
+  margin: 0;
+  padding: 0.3rem;
+  list-style: none;
+  background: var(--card);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-lg);
+  max-height: 260px;
+  overflow-y: auto;
+}
+
+.suggest-list li {
+  padding: 0.55rem 0.7rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+.suggest-list li:hover,
+.suggest-list li[aria-selected="true"] {
+  background: var(--highlight-soft);
+}
+.suggest-list .suggest-sub {
+  display: block;
+  color: var(--muted);
+  font-size: 0.77rem;
+}
+.suggest-empty {
+  padding: 0.55rem 0.7rem;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+/* ---------- Interest chips ---------- */
+.chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.chip {
+  padding: 0.45rem 0.95rem;
+  border-radius: 999px;
+  border: 1px solid var(--border-strong);
+  background: #fff;
+  color: var(--muted);
+  font-family: inherit;
+  font-size: 0.86rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.12s ease, border-color 0.12s ease, color 0.12s ease;
+}
+
+.chip:hover { border-color: var(--ink); color: var(--ink); }
+
+.chip[aria-pressed="true"] {
+  background: var(--highlight);
+  border-color: var(--ink);
+  color: var(--ink);
+  font-weight: 600;
+}
+
+/* ---------- Summary sidebar ---------- */
+.trip-summary {
+  position: sticky;
+  top: 88px;
+  padding: 1.5rem;
+  background: var(--highlight-soft);
+  border-color: var(--highlight);
+}
+.trip-summary h2 {
+  font-size: 1.15rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.7rem;
+  border-bottom: 1px solid var(--highlight);
+}
+
+.summary-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.summary-list li {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.8rem;
+  font-size: 0.9rem;
+}
+.summary-list .k { color: var(--muted); }
+.summary-list .v { font-weight: 600; text-align: right; }
+.summary-list .v.placeholder { color: #9c948d; font-weight: 400; }
+
+.summary-note {
+  margin: 1.1rem 0 0;
+  padding-top: 0.9rem;
+  border-top: 1px solid var(--highlight);
+  color: var(--muted);
+  font-size: 0.79rem;
+  line-height: 1.55;
+}
+
+/* ---------- Alert ---------- */
+.form-alert {
+  margin-top: 1.2rem;
+  padding: 0.85rem 1rem;
+  border-radius: var(--radius);
+  border: 1px solid rgba(179, 64, 47, 0.32);
+  background: var(--danger-soft);
+  color: var(--danger);
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+.form-alert[hidden] { display: none; }
+
+/* ---------- Loading state ---------- */
+.btn .spinner {
+  width: 1em;
+  height: 1em;
+  border: 2px solid currentColor;
+  border-right-color: transparent;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.form-card-loading { opacity: 0.65; pointer-events: none; }
